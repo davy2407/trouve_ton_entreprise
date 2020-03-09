@@ -77,7 +77,7 @@ function App() {
 
         </div>
         <div>
-          <button onClick={apiCallTest}></button>
+          <button onClick={apiCallTest}>Test Console</button>
           {apiTest.items}
         </div>
     </div>
