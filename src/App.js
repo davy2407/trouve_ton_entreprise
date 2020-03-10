@@ -1,16 +1,27 @@
 import React,{useState, useEffect} from 'react';
 
+
 import './App.css';
 import Form from './components/Form';
 import SelectMenu from './components/SelectMenu';
+import SelectRayon from './components/SelectRayon';
+import SelectTaille from './components/SelectTaille';
+import Map from './components/Map';
 
 function App() {
 
   const [recherches, setRecherches] = useState(
     [
-      {id: 1, nom : "Test Recherche"}
+      
     ]
   );
+
+  const [latLng, setLatLng] = useState(
+    {
+      lat : 48.845,
+      lng : 2.3752
+    }
+  )
 
   const [currentSearch, setCurrentSearch] = useState(
     {}
@@ -33,7 +44,12 @@ function App() {
             isLoaded: true,
             items: result.items
           });
-          console.log(result);
+          console.log(result.features[0].geometry.coordinates);
+          setLatLng({
+            lat : result.features[0].geometry.coordinates[1],
+            lng : result.features[0].geometry.coordinates[0]
+          });
+          console.log(latLng);
         },
         // Remarque : il est important de traiter les erreurs ici
         // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
@@ -70,6 +86,11 @@ function App() {
 
         <div className="RechercheVille">
           <Form onRechercheAdd={handleAdd}></Form>
+          <div>{recherches.map(objet => {
+            return (
+              <h3>{objet.nom}</h3>
+            )
+          })}</div>
 
           <SelectMenu>
 
@@ -78,8 +99,21 @@ function App() {
         </div>
         <div>
           <button onClick={apiCallTest}>Test Console</button>
-          {apiTest.items}
+          
         </div>
+
+        <SelectRayon>
+
+        </SelectRayon>
+
+
+        <SelectTaille>
+
+        </SelectTaille>
+
+        <Map onCoords = {latLng}>
+
+        </Map>
     </div>
   );
 }
