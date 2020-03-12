@@ -7,6 +7,10 @@ import SelectMenu from './components/SelectMenu';
 import SelectRayon from './components/SelectRayon';
 import SelectTaille from './components/SelectTaille';
 import Map from './components/Map';
+import ClassCount from './components/ClassCount';
+import FunctionCount from './components/FunctionCount';
+
+
 
 function App() {
 
@@ -76,6 +80,8 @@ function App() {
   };
   return (
     <div className="App">
+       {/* <ClassCount/> */}
+      <FunctionCount/>
       <h1>
             Annuaire d'entreprises
             Ceci est une première version. 
@@ -83,6 +89,7 @@ function App() {
             La création automatique de marqueurs sur la Map n'est pas encore valide ainsi que le filtre
             de recherche par date ( voir console)
         </h1>
+       
 
         <div className="RechercheVille">
           <Form onRechercheAdd={handleAdd}></Form>

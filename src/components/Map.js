@@ -13,6 +13,7 @@ import ReactMapGL, {Marker as MarkerTest, Popup as Test1} from "react-map-gl";
 
 
 function Map(props) {
+
 const test = () =>{
   console.log(props.onCoords);
 }
@@ -23,7 +24,20 @@ const [viewport, setViewport] = useState({
   width : "50vw",
   height : "50vh",
   zoom : 11
+  
 });
+
+useEffect(() => setViewport({
+  latitude : props.onCoords.lat,
+  longitude : props.onCoords.lng,
+  width : "50vw",
+  height : "50vh",
+  zoom : 11
+  
+}), [props.onCoords]);
+
+
+
 
 
 const [marqueurUtilisateur,setMarqueurUtilisateur] = useState(
@@ -55,6 +69,17 @@ useEffect(() => {
   window.addEventListener("keydown",listener);
 },[]);
 
+// useEffect(() => {
+  
+//    setViewport({
+//      latitude : props.onCoords.lat,
+//      longitude : props.onCoords.lng
+//    })
+
+  
+ 
+// }, [viewport])
+
 
 
 
@@ -65,7 +90,7 @@ useEffect(() => {
   return (
     <div className="RouenSec">
     
-          
+         
           <div className="App"  >
       <ReactMapGL {...viewport}
       mapboxApiAccessToken = "pk.eyJ1IjoiZGF2eTI0MDciLCJhIjoiY2szb2N5NXpjMWpibTNucXhqY2hzdnczZSJ9.iCSTSNxMJ4purLDyJht0zA"
@@ -75,6 +100,7 @@ useEffect(() => {
       }}
       
       onClick={(event)=> {handleClick(event)}}
+
       
       >
         
@@ -113,6 +139,7 @@ useEffect(() => {
 
 
       </ReactMapGL>
+      
       
     </div>
 
