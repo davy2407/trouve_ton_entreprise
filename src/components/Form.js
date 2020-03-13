@@ -25,7 +25,7 @@ const RechercheForm = (props) => {
                 type="text"
                 placeholder="Rechercher un lieux"
             />
-            <button>Confirmer</button>
+            <button onClick={(props.onTestApi)}>Confirmer</button>
         </form>
     );
 }

@@ -18,6 +18,8 @@ const test = () =>{
   console.log(props.onCoords);
 }
 
+
+
 const [viewport, setViewport] = useState({
   latitude : props.onCoords.lat,
   longitude : props.onCoords.lng,
@@ -30,7 +32,7 @@ const [viewport, setViewport] = useState({
 useEffect(() => setViewport({
   latitude : props.onCoords.lat,
   longitude : props.onCoords.lng,
-  width : "50vw",
+  width : "70vw",
   height : "50vh",
   zoom : 11
   
@@ -38,25 +40,30 @@ useEffect(() => setViewport({
 
 
 
-
-
 const [marqueurUtilisateur,setMarqueurUtilisateur] = useState(
-  [
-    
-  ]
+ 
+  [  ]
+ 
 );
 
+useEffect(()=> setMarqueurUtilisateur(props.onEntreprises),[props.onEntreprises]);
 
 
-const handleClick = async event =>{
+
+
+
+
+
+
+// const handleClick = async event =>{
   
-  const newMarqueurUtilisateur = {name : "test" ,lng : event.lngLat[0],lat : event.lngLat[1]};
-  const updatedMarqueurUtiliasateur = [...marqueurUtilisateur];
-  updatedMarqueurUtiliasateur.push(newMarqueurUtilisateur);
-  setMarqueurUtilisateur(updatedMarqueurUtiliasateur);
-  test();
+//   const newMarqueurUtilisateur = {name : "test" ,longitude : event.lngLat[0],latitude : event.lngLat[1]};
+//   const updatedMarqueurUtiliasateur = [...marqueurUtilisateur];
+//   updatedMarqueurUtiliasateur.push(newMarqueurUtilisateur);
+//   setMarqueurUtilisateur(updatedMarqueurUtiliasateur);
+//   test();
 
-}
+// }
 
 
 const [selectedPoint, setSelectedPoint] = useState(null);
@@ -99,7 +106,7 @@ useEffect(() => {
         setViewport(viewport);
       }}
       
-      onClick={(event)=> {handleClick(event)}}
+      // onClick={(event)=> {handleClick(event)}}
 
       
       >
@@ -109,7 +116,7 @@ useEffect(() => {
           
         
         {marqueurUtilisateur.map((test)=> (
-          <MarkerTest name="test" latitude={test.lat} longitude={test.lng}>
+          <MarkerTest name="test" latitude={parseFloat(test.latitude)} longitude={ parseFloat(test.longitude)}>
             <button className="marker-btn" onClick= {(e)=> {
               e.preventDefault();
               setSelectedPoint(test)
@@ -121,8 +128,8 @@ useEffect(() => {
 
         {selectedPoint ? (
           <Test1 
-          latitude={selectedPoint.lat} 
-          longitude={selectedPoint.lng}
+          latitude={parseFloat(selectedPoint.lat)} 
+          longitude={parseFloat(selectedPoint.lng)}
           onClose={() => {
             setSelectedPoint(null);
           }}>

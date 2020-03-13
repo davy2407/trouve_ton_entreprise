@@ -16,7 +16,7 @@ class SelectMenu extends React.Component {
     }
   
     handleSubmit(event) {
-      alert( "Secteur d'activité sélectionné :"  + this.state.value);
+      this.props.onNaf(this.state.value);
       event.preventDefault();
     }
   
@@ -26,6 +26,7 @@ class SelectMenu extends React.Component {
           <label>
             Choisissez un secteur d'activité : 
             <select value={this.state.value} onChange={this.handleChange}>
+            <option value="">selection</option>
               <option value="6201Z">Programmation informatique</option>
               <option value="6202A">Conseil en systèmes et logiciels informatiques</option>
               <option value="5911B">Production de films institutinnels et publicitaires</option>

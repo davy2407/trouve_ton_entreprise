@@ -16,7 +16,7 @@ class SelectRayon extends React.Component {
     }
   
     handleSubmit(event) {
-      alert( "Rayon de recherche : "  + this.state.value);
+      this.props.onRayon(this.state.value)
       event.preventDefault();
     }
   
@@ -24,8 +24,9 @@ class SelectRayon extends React.Component {
       return (
         <form onSubmit={this.handleSubmit}>
           <label>
-            RAyon de recherche : 
+            Rayon de recherche : 
             <select value={this.state.value} onChange={this.handleChange}>
+            <option value="">Choisir Rayon</option>
               <option value="5">5 km</option>
               <option value="10">10 km</option>
               <option value="25">25 km</option>
