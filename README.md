@@ -1,3 +1,41 @@
+
+
+Projet de site permettant un listing d'entreprises,
+
+Ce projet est une refonte du repo API_data,en  utilisant d'autres techno (en  particulier reactJS)
+
+
+Actuellement le style a été laissé à l'abandon pour se concentrer dans un premier temps sur les differentes fonctions de recherche.
+
+Si vous souhaitez tester >> Recherche lieux > valider puis clique sur affichage sur Map permet de changer la localisation de la carte mapbox ( attention les correcteurs de recherche ne sont pas en place >>> attention à l'orthopgraphe d ela ville)
+
+
+Pour la recherche par Rayon >>> Après avoir selectionner une ville et l'avoir affiché sur la carte mapbox 
+selectionner un secteur d'activté >> valider puis
+selectionner un rayon de recherche >> valider puis 
+cliquer sur Bouton final 
+
+resultat >> affichge des entreprise sur la map ainsi que du nom des entreprises en dessous de la map 
+
+
+
+Problème recontré actuellement >> le marker ne s'affiche plus et fait planté l'app lorsqu'on clic dessu .
+
+
+
+Prochain probleme a résoude >> probleme marker +  simplifier processus de recherche ( moins de bouton )
+
+
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
